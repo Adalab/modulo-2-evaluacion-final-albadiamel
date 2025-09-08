@@ -2,7 +2,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: Arial, sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 body {
@@ -13,6 +13,12 @@ body {
 header {
     padding: 16px;
     text-align: center;
+}
+
+.logo-title {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
 }
 
 main {
@@ -28,9 +34,26 @@ footer {
     padding: 16px;
 }
 
+button {
+    font-weight: bold;
+}
+
+.logo-adalab {
+    height: auto;
+    width: 118px;
+}
+
+h2 {
+    color: #53575A;
+    font-family: "Posterama 2001 W04 SemiBold";
+}
+
 /* Barra de búsqueda */
 .searching--bar {
-    margin-top: 8px;
+    margin-top: 16px;
+    border: 1px solid #ccc;
+    background-color: white;
+    padding: 25px;
 }
 
 .search-form {
@@ -42,13 +65,15 @@ footer {
 .search-input {
     height: 25px;
     width: 100%;
+    border: 1.5px solid #079C8D;
 }
 
 .search-button {
     background-color: #079C8D;
     border: none;
     color: white;
-    width: 40px;
+    width: 60px;
+    height: 25px;
 }
 
 /* Carrito */
@@ -56,11 +81,13 @@ footer {
     width: 30%;
     padding: 16px;
     height: fit-content;
+    color: #55595b;
 }
 
 .cart-list {
     margin-top: 16px;
 }
+
 .cart-item {
     border: 1px solid #ccc;
     background-color: white;
@@ -70,6 +97,8 @@ footer {
     padding: 10px;
     width: 200px;
     margin-bottom: 20px;
+    position: relative;
+    overflow: hidden;
 }
 
 .cart-item img {
@@ -79,18 +108,44 @@ footer {
     margin-bottom: 10px;
 }
 
-.delete-button {
-    background-color: #ccc;
+.cart-button {
+    position: absolute;
+    z-index: 10;
+    top: 5px;
+    right: 5px;
+    background-color: #079C8D;
     border: none;
     color: white;
-    width: 60px;
-    height: 25px;
+    width: 20px;
+    height: 20px;
+    padding: 0;
+} 
+
+.cart-button:hover {
+    background-color: #D3451E;
+}
+
+.empty-cart-button {
+    background-color: #079C8D;
+    border: none;
+    color: white;
+    width: 200px;
+    height: 35px;
+}
+
+.empty-cart-button:hover {
+    background-color: #D3451E;
+}
+
+.no-products-alert {
+    color: #D3451E;
 }
 
 /* Productos */
 .products {
     width: 70%;
     padding: 16px;
+    color: #55595b;
 }
 
 .products-list {
@@ -128,6 +183,14 @@ footer {
 
 .buy-button {
     background-color: #079C8D;
+    border: none;
+    color: white;
+    width: 60px;
+    height: 25px;
+}
+
+.delete-button {
+    background-color: #D3451E;
     border: none;
     color: white;
     width: 60px;

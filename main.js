@@ -57,23 +57,47 @@ fetch ('https://fakestoreapi.com/products')
   .then((data) => {
     products = data;
     renderProducts(products);
+    renderCart();
 });
 
 
 // AQUÍ EL RENDERIZADO DE LOS PRODUCTOS EN EL CARRITO
 const renderCart = () => {
   cartList.innerHTML = "";
+  if (cart.length === 0) {
+    cartList.innerHTML = `<p class="no-products-alert">No hay productos en el carrito</p>`;
+    return;
+  }
   cart.forEach(product => {
     const cartItem = document.createElement('div');
     cartItem.classList.add('cart-item');
     cartItem.innerHTML = 
-    `<img src="${product.image}" alt="${product.title}">
-    <p class="product-name">${product.title}</p>
-    <p class="product-price">${product.price} €</p>`;
+      `<button class="cart-button">x</button>
+      <img src="${product.image}" alt="${product.title}">
+      <p class="product-name">${product.title}</p>
+      <p class="product-price">${product.price} €</p>`;
+    // AQUÍ AGREGO LA LÓGICA PARA EL BOTÓN DE BORRAR
+    const deleteButton = cartItem.querySelector('.cart-button');
+    deleteButton.addEventListener('click', () => {
+      cart = cart.filter(item => item.id !== product.id);
+      renderCart();
+      renderProducts(products);
+    });
     cartList.appendChild(cartItem);
   });
+  // AQUÍ EMPIEZA LA LÓGICA PARA EL BOTÓN DE "VACIAR CARRO"
+  const emptyCartButton = document.createElement('button');
+  emptyCartButton.textContent = "Vaciar carrito";
+  emptyCartButton.classList.add('empty-cart-button');
+  emptyCartButton.addEventListener('click', () => {
+    cart = [];
+    renderCart();
+    renderProducts(products);
+  });
+  cartList.appendChild(emptyCartButton);
 };
 
+renderCart();
 
 // AQUÍ EMPIEZA LA LÓGICA PARA EL INPUT Y EL BOTÓN DE BÚSQUEDA
 const searchInput = document.querySelector('.search-input');

@@ -1,2 +1,8 @@
-console.log(">> Ready :)");
+console.log(">> Hola mundo!");const p=document.querySelector(".products-list"),i=document.querySelector(".cart-list");let c=[];const u=(t,e)=>{e?(t.textContent="Eliminar",t.classList.add("delete-button"),t.classList.remove("buy-button")):(t.textContent="Comprar",t.classList.add("buy-button"),t.classList.remove("delete-button"))},l=t=>{p.innerHTML="",t.forEach(e=>{const n=document.createElement("div");n.classList.add("product-card"),n.innerHTML=`<img src="${e.image}" alt="${e.title}">
+              <p class="product-name">${e.title}</p>
+              <p class="product-price">${e.price} €</p>
+              <button class="buy-button">Comprar</button>`;const s=n.querySelector(".buy-button");s.addEventListener("click",()=>{c.find(d=>d.id===e.id)?(c=c.filter(d=>d.id!==e.id),u(s,!1)):(c.push(e),u(s,!0)),a()}),u(s,!!c.find(o=>o.id===e.id)),p.appendChild(n)})};let r=[];fetch("https://fakestoreapi.com/products").then(t=>t.json()).then(t=>{r=t,l(r),a()});const a=()=>{if(i.innerHTML="",c.length===0){i.innerHTML='<p class="no-products-alert">No hay productos en el carrito</p>';return}c.forEach(e=>{const n=document.createElement("div");n.classList.add("cart-item"),n.innerHTML=`<button class="cart-button">x</button>
+      <img src="${e.image}" alt="${e.title}">
+      <p class="product-name">${e.title}</p>
+      <p class="product-price">${e.price} €</p>`,n.querySelector(".cart-button").addEventListener("click",()=>{c=c.filter(o=>o.id!==e.id),a(),l(r)}),i.appendChild(n)});const t=document.createElement("button");t.textContent="Vaciar carrito",t.classList.add("empty-cart-button"),t.addEventListener("click",()=>{c=[],a(),l(r)}),i.appendChild(t)};a();const m=document.querySelector(".search-input"),L=document.querySelector(".search-button"),h=t=>{t.preventDefault();const e=m.value.toLowerCase(),n=r.filter(s=>s.title.toLowerCase().includes(e));l(n)};L.addEventListener("click",h);
 //# sourceMappingURL=main.js.map

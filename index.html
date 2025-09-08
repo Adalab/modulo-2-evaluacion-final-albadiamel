@@ -4,9 +4,39 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <title>Document</title>
+    <title>Online Store</title>
 </head>
 <body>
-  <script src="main.js"></script>  
+    <header>
+        <h4>Online Store</h4>
+        <section class="searching--bar">
+            <form class="search-form">
+                <input type="text" class="search-input" placeholder="Example: Women">
+                <button type="submit" class="search-button">Find</button>
+            </form>
+        </section>
+    </header>
+
+    <main>
+        <section class="shopping--cart">
+            <h3>Shopping Cart</h3>
+            <div class="cart-list">
+                <!--Aquí pinto el listado de los productos desde JS-->
+            </div>
+        </section>
+
+        <section class="products">
+            <h3>Most popular products</h3>
+            <div class="products-list">
+                <!--Aquí pinto las tarjetas con los productos desde JS-->
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <h4>Online Store &copy Adalab 2025</h4>
+    </footer>
+
+    <script src="main.js"></script>
 </body>
 </html>
